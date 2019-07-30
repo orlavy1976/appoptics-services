@@ -37,5 +37,5 @@ group :development do
   gem "rspec", "~>3.1"
   gem "shoulda", "~> 3.5"
   gem "jeweler", "~> 2.1"
-  gem 'yard', "~> 0.8"
+  gem 'yard', '~> 0.9', '>= 0.9.20'
 end
