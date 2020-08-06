@@ -66,9 +66,9 @@ module AppOptics::Services
           :fallback => format_fallback(data),
           :color => VERTICAL_LINE_COLOR,
           :pretext => pretext,
-          :fields => data.violations.map do |source, measurements|
+          :fields => data.violations.map do |tagset, measurements|
             {
-              :title => source,
+              :title => pad_tagset(tagset),
               :value => measurements.inject([]) do |texts, measurement|
                 texts << data.format_measurement(measurement)
               end.join("\n")
@@ -151,6 +151,13 @@ module AppOptics::Services
 
     def log(msg)
       Rails.logger.info(msg) if defined?(Rails)
+    end
+
+    private
+
+    # Turns `method=get,service=addon-api` into `method=get, service=addon-api`
+    def pad_tagset(tagset)
+      tagset.gsub(/,/, ", ")
     end
   end
 end
