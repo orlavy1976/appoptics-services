@@ -157,7 +157,7 @@ module AppOptics::Services
 
     # Turns `method=get,service=addon-api` into `method=get, service=addon-api`
     def pad_tagset(tagset)
-      tagset.sub(/,/, ", ")
+      tagset.gsub(/,/, ", ")
     end
   end
 end
